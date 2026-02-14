@@ -1,0 +1,35 @@
+---
+import MinimalLayout from "../layouts/MinimalLayout.astro";
+---
+
+<MinimalLayout>
+  <div class="flex flex-col items-center justify-center gap-5 md:flex-row">
+    <a href="/" class="flex items-center">
+      <div class="aspect-square rounded-sm">
+        <img id="avatar" src="/me.svg" alt="Me" class="select-none" width="100" />
+      </div>
+      <script is:inline>
+        (function () {
+          const savedTheme = localStorage.getItem("theme");
+          const isDark = savedTheme === "dark";
+          const avatar = document.getElementById("avatar");
+          if (avatar) {
+            avatar.src = isDark ? "/me_light.svg" : "/me.svg";
+          }
+        })();
+      </script>
+      <script>
+        const avatar = document.getElementById("avatar") as HTMLImageElement;
+        const updateAvatar = () => {
+          if (avatar) {
+            avatar.src = document.documentElement.classList.contains("dark")
+              ? "/me_light.svg"
+              : "/me.svg";
+          }
+        };
+        window.addEventListener("themechange", updateAvatar);
+      </script>
+    </a>
+    <p class="text-sm font-medium">page not found :(</p>
+  </div>
+</MinimalLayout>

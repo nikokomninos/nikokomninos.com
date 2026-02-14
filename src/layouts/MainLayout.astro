@@ -1,0 +1,32 @@
+---
+import Navbar from "../components/nav/Navbar.astro";
+import Footer from "../components/home/Footer.astro";
+import Sidebar from "../components/home/Sidebar.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Niko Komninos</title>
+    <script is:inline>
+      const savedTheme = localStorage.getItem('theme');
+      const isDark = savedTheme === 'dark';
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body class="px-5 md:px-0 mx-auto flex min-h-screen w-full md:w-3/4 lg:w-1/2 flex-col">
+    <Navbar />
+    <div class="bg-background flex flex-1 flex-col md:flex-row w-full gap-10">
+      <div class="w-full md:w-3/4">
+        <slot />
+      </div>
+      <Sidebar />
+    </div>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,34 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+
+const renderedProjects = await Promise.all(
+  projects.map(async (project: any) => {
+    const { Content } = await project.render();
+    return { ...project, Content };
+  }),
+);
+---
+
+<MainLayout>
+  <h1 class="mb-6 text-xl font-semibold">projects</h1>
+  <div class="space-y-2">
+    {
+      renderedProjects.map((project: any) => (
+        <article>
+          <a
+            href={`/projects/${project.slug}`}
+            class="hover:bg-foreground-alt/10 ease-linear duration-75 rounded-md block py-1"
+          >
+            <h2 class="text-sm font-semibold">{project.data.title}</h2>
+            <div class="flex gap-1 items-center text-foreground/75 text-xs">
+              <span>{project.data.duration}</span>
+            </div>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</MainLayout>

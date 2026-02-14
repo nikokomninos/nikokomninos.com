@@ -1,0 +1,45 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("posts")).sort(
+  (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const renderedPosts = await Promise.all(
+  posts.map(async (post: any) => {
+    const { Content } = await post.render();
+    const postNumber = post.id.replace(/\.md$/, "");
+    return { ...post, Content, postNumber };
+  }),
+);
+---
+
+<MainLayout>
+  <h1 class="mb-6 text-xl font-semibold">posts</h1>
+  <div class="space-y-2">
+    {
+      renderedPosts.map((post: any) => (
+        <article>
+          <a
+            href={`/posts/${post.slug}`}
+            class="hover:bg-foreground-alt/10 ease-linear duration-75 rounded-md block py-1"
+          >
+            <h2 class="text-sm font-semibold">{post.data.title}</h2>
+            <div class="flex gap-1 items-center text-foreground/75 text-xs">
+              <span>#{post.postNumber}</span>
+              <span>&#9702;</span>
+              <time>
+                {post.data.pubDate.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            </div>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</MainLayout>

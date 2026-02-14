@@ -1,0 +1,41 @@
+---
+import { Sun, Moon } from "@lucide/astro";
+---
+
+<button id="theme-btn" class="cursor-pointer hover:text-foreground-alt ease-linear duration-75">
+  <span id="theme-icon-sun">
+    <Sun size={15}/>
+  </span>
+  <span id="theme-icon-moon" class="hidden">
+    <Moon size={15}/>
+  </span>
+</button>
+
+<script>
+  const themeBtn = document.getElementById('theme-btn');
+  const sunIcon = document.getElementById('theme-icon-sun');
+  const moonIcon = document.getElementById('theme-icon-moon');
+  
+  const savedTheme = localStorage.getItem('theme');
+  const isDark = savedTheme === 'dark';
+  
+  if (isDark) {
+    document.documentElement.classList.add('dark');
+    sunIcon?.classList.add('hidden');
+    moonIcon?.classList.remove('hidden');
+  } else {
+    sunIcon?.classList.remove('hidden');
+    moonIcon?.classList.add('hidden');
+  }
+  
+  themeBtn?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    
+    sunIcon?.classList.toggle('hidden');
+    moonIcon?.classList.toggle('hidden');
+    
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    
+    window.dispatchEvent(new CustomEvent('themechange'));
+  });
+</script>

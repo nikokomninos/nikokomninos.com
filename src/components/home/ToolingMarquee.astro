@@ -1,0 +1,92 @@
+---
+import {
+  FaGolang,
+  FaPython,
+  FaReact,
+  FaVuejs,
+  FaNode,
+  FaAws,
+  FaDocker,
+  FaJava,
+  FaGithub,
+} from "react-icons/fa6";
+import { BiLogoTypescript } from "react-icons/bi";
+import {
+  SiExpress,
+  SiNuxtdotjs,
+  SiBun,
+  SiRender,
+  SiMongodb,
+  SiPostgresql,
+  SiC,
+  SiCplusplus,
+} from "react-icons/si";
+import {
+  RiNextjsLine,
+  RiTailwindCssFill,
+  RiSupabaseFill,
+} from "react-icons/ri";
+import { IoLogoVercel } from "react-icons/io5";
+
+const tools = [
+  { Icon: FaJava, name: "java" },
+  { Icon: FaGolang, name: "go" },
+  { Icon: SiC, name: "c" },
+  { Icon: SiCplusplus, name: "cpp" },
+  { Icon: FaPython, name: "python" },
+  { Icon: BiLogoTypescript, name: "typescript" },
+  { Icon: FaReact, name: "react" },
+  { Icon: FaVuejs, name: "vue" },
+  { Icon: FaNode, name: "node.js" },
+  { Icon: SiExpress, name: "express" },
+  { Icon: SiNuxtdotjs, name: "nuxt" },
+  { Icon: RiNextjsLine, name: "next.js" },
+  { Icon: RiTailwindCssFill, name: "tailwind" },
+  { Icon: SiMongodb, name: "mongodb" },
+  { Icon: SiPostgresql, name: "postgresql" },
+  { Icon: RiSupabaseFill, name: "supabase" },
+  { Icon: FaAws, name: "aws" },
+  { Icon: FaDocker, name: "docker" },
+  { Icon: FaGithub, name: "git" },
+  { Icon: SiBun, name: "bun" },
+  { Icon: SiRender, name: "render" },
+  { Icon: IoLogoVercel, name: "vercel" },
+];
+
+const allTools = [...tools, ...tools, ...tools];
+---
+
+<div
+  id="marquee-container"
+  class="border-foreground-alt/50 flex h-10 w-full items-center overflow-hidden rounded-md border"
+>
+  <div class="marquee-track flex items-center gap-8">
+    {
+      allTools.map(({ Icon, name }, _) => (
+        <div class="hover:text-foreground-alt flex items-center gap-2 whitespace-nowrap duration-75 ease-linear select-none">
+          <Icon className="text-xl" />
+          <span class="text-sm">{name}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-33.33%);
+    }
+  }
+
+  .marquee-track {
+    animation: marquee 90s linear infinite;
+  }
+
+  #marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+  }
+</style>

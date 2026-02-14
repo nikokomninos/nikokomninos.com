@@ -1,0 +1,34 @@
+---
+import { Volume2 } from "@lucide/astro";
+---
+
+<button
+  id="name"
+  class="group border-foreground-alt/50 hover:text-foreground-alt relative flex h-fit w-fit cursor-pointer items-center gap-1 rounded-lg border p-1 text-xs duration-75 ease-linear select-none hover:scale-102 active:scale-97"
+>
+  <div
+    class="text-foreground bg-background border-foreground/50 absolute bottom-6 left-1/2 hidden h-5 w-fit -translate-x-1/2 -translate-y-1/2 rounded-sm border px-3 group-hover:block"
+  >
+    <div
+      class="border-r-foreground/50 border-b-foreground/50 absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border-r border-b"
+    >
+    </div>
+
+    <div
+      class="border-t-background absolute -bottom-2 left-1/2 h-2 w-2 -translate-x-1/2 border-t"
+    >
+    </div>
+    <p class="whitespace-nowrap">NEE-koh come-NEE-nohs</p>
+  </div>
+  <Volume2 size={13} />
+  <slot />
+</button>
+
+<script>
+  const btn = document.getElementById("name");
+  btn?.addEventListener("click", () => {
+    const utterance = new SpeechSynthesisUtterance("NEE-koh come-NEE-nose");
+    utterance.rate = 0.85;
+    speechSynthesis.speak(utterance);
+  });
+</script>

@@ -1,0 +1,47 @@
+---
+import "../../styles/global.css";
+import { Rss } from "@lucide/astro";
+import NavbarOption from "./NavbarOption.astro";
+import ThemeSwitcher from "../home/ThemeSwitcher.astro";
+---
+
+<nav class="mt-5 md:mt-10 mb-10 md:mb-20 flex flex-col md:flex-row items-center justify-between">
+  <a href="/" class="flex items-center gap-2 md:gap-1">
+    <div class="h-10 w-10 mb-3 md:mb-0 rounded-sm text-xs">
+      <img id="nav-avatar" src="/me.svg" alt="Me" class="select-none" />
+    </div>
+    <script is:inline>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const isDark = savedTheme === 'dark';
+        const navAvatar = document.getElementById('nav-avatar');
+        if (navAvatar) {
+          navAvatar.src = isDark ? '/me_light.svg' : '/me.svg';
+        }
+      })();
+    </script>
+    <script>
+      const navAvatar = document.getElementById('nav-avatar') as HTMLImageElement;
+      const updateNavAvatar = () => {
+        if (navAvatar) {
+          navAvatar.src = document.documentElement.classList.contains('dark') ? '/me_light.svg' : '/me.svg';
+        }
+      };
+      window.addEventListener('themechange', updateNavAvatar);
+    </script>
+    <h1 class="font-script text-xl select-none">niko komninos</h1>
+  </a>
+  <div class="flex items-center gap-2">
+    <NavbarOption href="/posts">posts</NavbarOption>
+    <NavbarOption href="/projects">projects</NavbarOption>
+    <a
+      href="/rss.xml"
+      target="_blank"
+      class="hover:text-foreground-alt duration-75 ease-linear"
+      aria-label="rss feed"
+    >
+      <Rss size={15} />
+    </a>
+    <ThemeSwitcher />
+  </div>
+</nav>

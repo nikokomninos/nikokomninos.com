@@ -1,0 +1,130 @@
+---
+interface TopTrack {
+  name: string;
+  "@attr": {
+    rank: string;
+  };
+  artist: {
+    name: string;
+    url: string;
+    mbid: string;
+  };
+  url: string;
+  playcount: string;
+}
+
+interface TrackInfo {
+  track: {
+    name: string;
+    artist: {
+      name: string;
+    };
+    album?: {
+      title: string;
+      image: {
+        size: string;
+        "#text": string;
+      }[];
+    };
+  };
+}
+
+interface TrackWithAlbum extends TopTrack {
+  albumImage?: string;
+}
+
+async function getTrackInfo(
+  artist: string,
+  track: string,
+): Promise<TrackInfo | null> {
+  try {
+    const res = await fetch(
+      `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${import.meta.env.LASTFM_KEY}&artist=${encodeURIComponent(artist)}&track=${encodeURIComponent(track)}&format=json`,
+    );
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+async function getTracks(): Promise<TrackWithAlbum[] | null> {
+  try {
+    const res = await fetch(
+      `http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=nikokomninos&api_key=${import.meta.env.LASTFM_KEY}&period=7day&limit=5&format=json`,
+    );
+
+    const data = await res.json();
+    const topTracks: TopTrack[] = data.toptracks.track;
+
+    const tracksWithAlbum = await Promise.all(
+      topTracks.map(async (track) => {
+        const trackInfo = await getTrackInfo(track.artist.name, track.name);
+        const albumImage = trackInfo?.track?.album?.image?.find(
+          (img) => img.size === "medium",
+        )?.["#text"];
+
+        return {
+          ...track,
+          albumImage,
+        };
+      }),
+    );
+
+    return tracksWithAlbum;
+  } catch {
+    return null;
+  }
+}
+
+const tracks = await getTracks();
+---
+
+<div class="space-y-3">
+  {
+    tracks?.map((track) => (
+      <a
+        href={track.url}
+        target="_blank"
+        class="group hover:bg-foreground-alt/10 flex items-center gap-3 rounded-lg duration-75 ease-linear select-none"
+      >
+        <div class="relative block md:hidden">
+          <img
+            src={
+              track.albumImage ||
+              "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+            }
+            alt={track.name}
+            class="h-10 w-10 shrink-0 rounded-md duration-75 ease-linear group-hover:scale-102 group-hover:rotate-5"
+          />
+          <div class="bg-background border-foreground-alt/50 text-foreground-alt absolute -top-1 -left-1 flex aspect-square h-4 w-fit items-center justify-center rounded-sm border duration-75 ease-linear group-hover:scale-103 group-hover:-rotate-8">
+            <p class="text-foreground group-hover:text-foreground-alt text-[10px]">
+              {track.playcount}
+            </p>
+          </div>
+        </div>
+        <div class="min-w-0 flex-1">
+          <p class="line-clamp-2 text-xs font-medium">
+            {track.name.toLowerCase()}
+          </p>
+          <p class="line-clamp-2 text-xs">{track.artist.name.toLowerCase()}</p>
+        </div>
+        <div class="relative hidden md:block">
+          <img
+            src={
+              track.albumImage ||
+              "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+            }
+            alt={track.name}
+            class="h-10 w-10 shrink-0 rounded-md duration-75 ease-linear group-hover:scale-102 group-hover:rotate-5"
+          />
+          <div class="bg-background border-foreground-alt/50 text-foreground-alt absolute -top-1 -left-1 flex aspect-square h-4 w-fit items-center justify-center rounded-sm border duration-75 ease-linear group-hover:scale-103 group-hover:-rotate-8">
+            <p class="text-foreground group-hover:text-foreground-alt text-[10px]">
+              {track.playcount}
+            </p>
+          </div>
+        </div>
+      </a>
+    ))
+  }
+</div>

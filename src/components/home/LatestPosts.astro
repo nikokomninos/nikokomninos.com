@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("posts"))
+  .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+
+const postsWithNumbers = posts.map((post: any) => ({
+  ...post,
+  postNumber: post.id.replace(/\.md$/, ""),
+}));
+---
+
+<div class="space-y-3">
+  {
+    postsWithNumbers.map((post: any) => (
+      <a
+        href={`/posts/${post.slug}`}
+        class="block hover:bg-foreground-alt/10 ease-linear duration-75 rounded-md py-1"
+      >
+        <h3 class="text-xs font-medium">{post.data.title}</h3>
+        <div class="text-foreground/75 text-xs">
+          <span>#{post.postNumber}</span>
+          <span>&#9702;</span>
+          <time>
+            {post.data.pubDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+        </div>
+      </a>
+    ))
+  }
+</div>

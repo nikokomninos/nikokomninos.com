@@ -1,0 +1,12 @@
+---
+interface Props {
+  href: string;
+  children: any;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href} class="animate-gradient text-md group relative select-none">
+  <slot />
+</a>
