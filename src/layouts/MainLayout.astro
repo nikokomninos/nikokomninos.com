@@ -11,6 +11,12 @@ import Sidebar from "../components/home/Sidebar.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Niko Komninos</title>
+    <meta property="og:title" content="Niko Komninos" />
+    <meta property="og:image" content="https://nikokomninos.com/tool.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Niko Komninos" />
+    <meta name="twitter:image" content="https://nikokomninos.com/tool.png" />
     <script is:inline>
       const savedTheme = localStorage.getItem('theme');
       const isDark = savedTheme === 'dark';
