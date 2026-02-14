@@ -44,16 +44,33 @@ import { RiDiscordLine } from "react-icons/ri";
         <h2>full-stack developer &#9702; graduate student @ adelphi</h2>
         <h2>graduate assistant @ adelphi</h2>
         <h2>
-          new york &#9702
-          {
-            new Date().toLocaleTimeString("en-US", {
-              timeZone: "America/New_York",
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })
-          }
+          new york &#9702; <span id="time-hours">--</span>:<span id="time-minutes">--</span> <span id="time-ampm"></span>
         </h2>
+        <script is:inline>
+          (function () {
+            const hoursEl = document.getElementById("time-hours");
+            const minutesEl = document.getElementById("time-minutes");
+            const ampmEl = document.getElementById("time-ampm");
+            function updateTime() {
+              if (hoursEl && minutesEl && ampmEl) {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString("en-US", {
+                  timeZone: "America/New_York",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: true,
+                });
+                const [time, ampm] = timeString.split(" ");
+                const [hours, minutes] = time.split(":");
+                hoursEl.textContent = hours;
+                minutesEl.textContent = minutes;
+                ampmEl.textContent = ampm;
+              }
+            }
+            updateTime();
+            setInterval(updateTime, 1000);
+          })();
+        </script>
       </div>
 
       <div class="mt-auto flex flex-col gap-2">
