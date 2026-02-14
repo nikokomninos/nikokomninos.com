@@ -40,6 +40,7 @@ async function getTrackInfo(
   try {
     const res = await fetch(
       `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${import.meta.env.LASTFM_KEY}&artist=${encodeURIComponent(artist)}&track=${encodeURIComponent(track)}&format=json`,
+      { cache: "no-store" },
     );
     if (!res.ok) return null;
     return await res.json();
@@ -52,6 +53,7 @@ async function getTracks(): Promise<TrackWithAlbum[] | null> {
   try {
     const res = await fetch(
       `http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=nikokomninos&api_key=${import.meta.env.LASTFM_KEY}&period=7day&limit=5&format=json`,
+      { cache: "no-store" },
     );
 
     const data = await res.json();
