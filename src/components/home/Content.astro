@@ -13,30 +13,33 @@ import { RiDiscordLine } from "react-icons/ri";
       <img id="avatar" src="/me.svg" alt="Me" class="select-none" />
     </div>
     <script is:inline>
-      (function() {
-        const savedTheme = localStorage.getItem('theme');
-        const isDark = savedTheme === 'dark';
-        const avatar = document.getElementById('avatar');
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        const isDark = savedTheme === "dark";
+        const avatar = document.getElementById("avatar");
         if (avatar) {
-          avatar.src = isDark ? '/me_light.svg' : '/me.svg';
+          avatar.src = isDark ? "/me_light.svg" : "/me.svg";
         }
       })();
     </script>
     <script>
-      const avatar = document.getElementById('avatar') as HTMLImageElement;
+      const avatar = document.getElementById("avatar") as HTMLImageElement;
       const updateAvatar = () => {
         if (avatar) {
-          avatar.src = document.documentElement.classList.contains('dark') ? '/me_light.svg' : '/me.svg';
+          avatar.src = document.documentElement.classList.contains("dark")
+            ? "/me_light.svg"
+            : "/me.svg";
         }
       };
-      window.addEventListener('themechange', updateAvatar);
+      window.addEventListener("themechange", updateAvatar);
     </script>
 
     <div class="flex w-full flex-col">
       <div class="text-end">
         <div class="flex items-center justify-end gap-2">
+          <span class="block md:hidden"><Name /></span>
           <h1 class="text-xl font-semibold">niko komninos</h1>
-          <Name />
+          <span class="hidden md:block"><Name /></span>
         </div>
         <h2>full-stack developer &#9702; graduate student @ adelphi</h2>
         <h2>graduate assistant @ adelphi</h2>
@@ -62,7 +65,7 @@ import { RiDiscordLine } from "react-icons/ri";
             iconProps={{ size: 13 }}>email</SocialTop
           >
           <SocialTop
-            href=""
+            href="/resume.pdf"
             uname="click me!"
             icon={FileUser}
             iconProps={{ size: 13 }}>resume</SocialTop
@@ -112,7 +115,8 @@ import { RiDiscordLine } from "react-icons/ri";
     <p class="mb-5">
       niko's current occupation is the role of <strong
         >graduate assistant</strong
-      > at adelphi university, where he assists in teaching and grading python and sql.
+      > at adelphi university, where he assists in teaching and grading python and
+      sql.
     </p>
     <p class="mb-5">
       outside of work, niko is currently working on <strong>dotconfig</strong>,
