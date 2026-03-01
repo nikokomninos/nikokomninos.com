@@ -1,14 +1,14 @@
 ---
-title: "pachingo: a spiritual successor to peggle"
-duration: "aug 2025 - present"
+title: "PachinGO: A spiritual successor to Peggle"
+duration: "Aug 2025 - Present"
 ---
-**<a href="https://www.playpachingo.com" target="_blank" class="animate-gradient">"pachingo!" </a>**
+**<a href="https://www.playpachingo.com" target="_blank" class="animate-gradient">"PachinGO!" </a>**
 is a free to play web-based game inspired by 
-**<a href="https://en.wikipedia.org/wiki/Pachinko" target="_blank" class="animate-gradient">japanese pachinko machines</a>**
+**<a href="https://en.wikipedia.org/wiki/Pachinko" target="_blank" class="animate-gradient">Japanese pachinko machines</a>**
 and 
-**<a href="https://en.wikipedia.org/wiki/Peggle" target="_blank" class="animate-gradient">peggle</a>**
-by ea popcap. 
-it is a spiritual successor to the latter, extended with support for user-generated levels featuring user-uploaded 
+**<a href="https://en.wikipedia.org/wiki/Peggle" target="_blank" class="animate-gradient">Peggle</a>**
+by EA Popcap. 
+It is a spiritual successor to the latter, extended with support for user-generated levels featuring user-uploaded 
 assets, making each level a unique experience. 
 
 <div class="flex justify-center my-5">
@@ -23,10 +23,10 @@ assets, making each level a unique experience.
 
 <hr class="mt-5 mb-5">
 
-<p class="mb-3 font-semibold">details:</p>
+<p class="mb-3 font-semibold">Details:</p>
 
-- built a frontend using next/react, typescript and tailwindcss to host a web-based game and its community functionality including searching for and sharing custom levels
-- built a backend using node, express and typescript to host a restful api for interacting with a mongodb database and an aws s3 bucket
-- wrote a python microservice to generate level thumbnails
-- managed source code using git and developed in agile using jira as a project tracker
-- deployed to various cloud hosts including vercel, render and mongodb atlas
+- Built a frontend using Next/React, TypeScript, and TailwindCSS to host a web-based game and its community functionality including searching for and sharing custom levels
+- Built a backend using Node, Express, and TypeScript to host a restful API for interacting with a MongoDB database and an AWS S3 bucket
+- Wrote a python microservice to generate level thumbnails
+- Managed source code using git and developed in agile using Jira as a project tracker
+- Deployed to various cloud hosts including Vercel, Render and MongoDB Atlas
