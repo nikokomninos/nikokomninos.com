@@ -1,5 +1,5 @@
 ---
-title: "JPEGSort: sort jpg files into year folders"
+title: "JPEGSort: Sort .jpg files into year folders"
 duration: "Jul 2025 - Jul 2025"
 ---
 
