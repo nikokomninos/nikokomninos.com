@@ -7,6 +7,6 @@ interface Props {
 const { href } = Astro.props;
 ---
 
-<a href={href} class="animate-gradient text-md group relative select-none">
+<a href={href} class="hover:text-foreground-alt duration-75 ease-linear text-md group relative select-none">
   <slot />
 </a>

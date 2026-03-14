@@ -108,29 +108,7 @@ li {
   @apply list-disc ml-5
 }
 
-@keyframes animate-gradient {
-  0% {
-    background-size: 0% 100%;
-  }
-  100% {
-    background-size: 100% 100%;
-  }
-}
+.link {
+  @apply hover:text-foreground-alt underline duration-75 ease-linear;
 
-.animate-gradient {
-  background: linear-gradient(
-    to right,
-    var(--color-foreground-alt) 50%,
-    currentColor 50%
-  );
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: background-position 0.1s ease;
-}
-
-.animate-gradient:hover {
-  background-position: 0 0;
 }

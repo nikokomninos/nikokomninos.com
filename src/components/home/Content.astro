@@ -35,13 +35,14 @@ import { RiDiscordLine } from "react-icons/ri";
     </script>
 
     <div class="flex w-full flex-col">
-      <div class="text-end">
-        <div class="flex items-center justify-end gap-2">
+      <div class="text-end mb-3">
+        <div class="flex items-center justify-end gap-2 mb-3">
           <span class="block md:hidden"><Name /></span>
           <h1 class="text-xl font-semibold">Niko Komninos</h1>
           <span class="hidden md:block"><Name /></span>
         </div>
         <h2>Full-Stack Developer &#9702; Graduate Student @ Adelphi</h2>
+        <h2>Full-Stack Intern @ Lending Automator</h2>
         <h2>Graduate Assistant @ Adelphi</h2>
         <h2>
           New York &#9702; <span id="time-hours">--</span>:<span
@@ -86,7 +87,7 @@ import { RiDiscordLine } from "react-icons/ri";
           >
           <SocialTop
             href="/resume.pdf"
-            uname="click me!"
+            uname="Click Me!"
             icon={FileUser}
             iconProps={{ size: 13 }}>Resume</SocialTop
           >
@@ -131,11 +132,18 @@ import { RiDiscordLine } from "react-icons/ri";
     <div class="mb-5 flex justify-center">
       <ToolingMarquee />
     </div>
-    <p class="mb-5">
-      Niko's current occupation is the role of Graduate Assistant at Adelphi
-      University, where he assists in teaching and grading introductory level
-      computer science courses.
-    </p>
+    <p class="mb-3">Niko has two current occupations:</p>
+    <ul class="mb-5">
+      <li>
+        <strong>Full-Stack Software Engineer Intern @ Lending Automator</strong>, a company
+        building a product to automate the loan lending process and to help
+        mortgage brokers manage their unique businesses from a single interface
+      </li>
+      <li>
+        <strong>Graduate Assistant @ Adelphi University</strong>, where he assists in teaching
+        and grading introductory level computer science courses.
+      </li>
+    </ul>
     <p class="mb-5">
       Outside of school and work, Niko is currently working on dotconfig, a
       social platform tailored specifically towards developers. After trying out
@@ -143,15 +151,15 @@ import { RiDiscordLine } from "react-icons/ri";
       discussion, sharing projects and sharing configuration files, he found
       that they weren't optimal for any of those tasks. He wants to build the
       social platform that developers deserve! The rest of his projects can be
-      found <a href="/projects" class="animate-gradient font-semibold">here</a>.
+      found <a href="/projects" class="link">here</a>.
     </p>
     <p class="mb-5">
       Outside of programming, Niko enjoys listening to metal. His favorite band
       is TOOL; You can see more of his taste on his <a
         href="https://www.last.fm/user/nikokomninos"
         target="_blank"
-        class="animate-gradient font-semibold">LastFM</a
-      >! He also loves all cardio related activities; You can catch him on a run
+        class="link">LastFM</a
+      >. He also loves all cardio related activities; You can catch him on a run
       in just about any type of weather.
     </p>
     <p class="text-md font-semibold">Enjoy your stay!</p>

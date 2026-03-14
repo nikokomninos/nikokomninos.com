@@ -2,11 +2,11 @@
 title: "PachinGO: A spiritual successor to Peggle"
 duration: "Aug 2025 - Present"
 ---
-**<a href="https://www.playpachingo.com" target="_blank" class="animate-gradient">"PachinGO!" </a>**
-is a free to play web-based game inspired by 
-**<a href="https://en.wikipedia.org/wiki/Pachinko" target="_blank" class="animate-gradient">Japanese pachinko machines</a>**
+<a href="https://www.playpachingo.com" target="_blank" class="link">"PachinGO!"</a>
+ is a free to play web-based game inspired by 
+<a href="https://en.wikipedia.org/wiki/Pachinko" target="_blank" class="link">Japanese pachinko machines</a>
 and 
-**<a href="https://en.wikipedia.org/wiki/Peggle" target="_blank" class="animate-gradient">Peggle</a>**
+<a href="https://en.wikipedia.org/wiki/Peggle" target="_blank" class="link">Peggle</a>
 by EA Popcap. 
 It is a spiritual successor to the latter, extended with support for user-generated levels featuring user-uploaded 
 assets, making each level a unique experience. 
