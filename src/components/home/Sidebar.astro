@@ -1,5 +1,5 @@
 ---
-import LastFM from "./LastFM.astro";
+//import LastFM from "./LastFM.astro";
 import LatestPosts from "./LatestPosts.astro";
 ---
 
@@ -7,6 +7,7 @@ import LatestPosts from "./LatestPosts.astro";
   id="sidebar"
   class="bg-foreground-alt/5 md:bg-background mt-auto mb-3 flex w-full flex-row gap-2 rounded-md p-2 text-start md:mt-0 md:mb-0 md:block md:w-1/4 md:gap-0 md:rounded-none md:p-0 md:text-end"
 >
+  <!--
   <div class="mb-6 w-1/2 md:w-full">
     <h2 class="text-md font-bold">Top Tracks This Week</h2>
     <div class="mb-3 flex justify-start text-xs md:justify-end">
@@ -15,8 +16,9 @@ import LatestPosts from "./LatestPosts.astro";
     </div>
     <LastFM />
   </div>
+    !-->
 
-  <div class="w-1/2 text-end md:w-full">
+  <div class="w-full text-start md:text-end">
     <h2 class="text-md mb-7 font-semibold md:mb-2">Latest Posts</h2>
     <LatestPosts />
   </div>
