@@ -11,13 +11,18 @@ by EA Popcap.
 It is a spiritual successor to the latter, extended with support for user-generated levels featuring user-uploaded 
 assets, making each level a unique experience. 
 
-<div class="flex justify-center my-5">
-<video width=400 height=300 autoPlay disablePictureInPicture loop muted class="rounded-md">
+<div class="flex flex-col items-center my-5 gap-5">
+<video width=500 height=400 autoPlay disablePictureInPicture loop muted class="rounded-md">
     <source
     src="/projects/pachingo.mp4"
     type="video/mp4"
     />
-    Your browser does not support the video tag.
+</video>
+<video width=500 height=400 autoPlay disablePictureInPicture loop muted class="rounded-md">
+    <source
+    src="/projects/pachingo_search.webm"
+    type="video/webm"
+    />
 </video>
 </div>
 
