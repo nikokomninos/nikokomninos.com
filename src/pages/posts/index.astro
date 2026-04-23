@@ -6,13 +6,10 @@ const posts = (await getCollection("posts")).sort(
   (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const renderedPosts = await Promise.all(
-  posts.map(async (post: any) => {
-    const { Content } = await post.render();
-    const postNumber = post.id.replace(/\.md$/, "");
-    return { ...post, Content, postNumber };
-  }),
-);
+const renderedPosts = posts.map((post: any) => ({
+  ...post,
+  postNumber: post.id.replace(/\.md$/, ""),
+}));
 ---
 
 <MainLayout>

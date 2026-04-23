@@ -2,12 +2,15 @@
 import { Sun, Moon } from "@lucide/astro";
 ---
 
-<button id="theme-btn" class="cursor-pointer hover:text-foreground-alt ease-linear duration-75">
+<button
+  id="theme-btn"
+  class="group border-foreground-alt/50 hover:text-foreground-alt relative flex h-fit w-fit cursor-pointer items-center gap-1 rounded-lg border p-1 text-xs duration-75 ease-linear select-none hover:scale-102 active:scale-97"
+>
   <span id="theme-icon-sun">
-    <Sun size={15}/>
+    <Sun size={13} />
   </span>
   <span id="theme-icon-moon" class="hidden">
-    <Moon size={15}/>
+    <Moon size={13} />
   </span>
 </button>
 

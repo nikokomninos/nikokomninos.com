@@ -1,6 +1,4 @@
 ---
-import "../../styles/global.css";
-import { Rss } from "@lucide/astro";
 import NavbarOption from "./NavbarOption.astro";
 import ThemeSwitcher from "../home/ThemeSwitcher.astro";
 ---
@@ -33,15 +31,6 @@ import ThemeSwitcher from "../home/ThemeSwitcher.astro";
   </a>
   <div class="flex items-center gap-2">
     <NavbarOption href="/posts">Posts</NavbarOption>
-    <NavbarOption href="/projects">Projects</NavbarOption>
-    <a
-      href="/rss.xml"
-      target="_blank"
-      class="hover:text-foreground-alt duration-75 ease-linear"
-      aria-label="rss feed"
-    >
-      <Rss size={15} />
-    </a>
     <ThemeSwitcher />
   </div>
 </nav>

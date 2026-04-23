@@ -104,9 +104,9 @@ body {
   @apply font-satoshi bg-background text-foreground text-sm tracking-tight transition-colors duration-200;
 }
 
-li {
+/*li {
   @apply list-disc ml-5
-}
+}*/
 
 .link {
   @apply hover:text-foreground-alt underline duration-75 ease-linear;
