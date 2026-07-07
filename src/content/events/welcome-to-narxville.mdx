@@ -1,0 +1,69 @@
+---
+eventID: "welcome-to-narxville"
+title: "Welcome to Narxville"
+description: "Big ass party"
+startsAt: "2025-08-01T16:00:00-04:00"
+endsAt: "2025-08-02T00:00:00-04:00"
+location: "3890 Clove Ct, Seaford, NY"
+status: "published"
+rsvpEnabled: true
+---
+
+import InviteGate from "../../components/event/InviteGate";
+
+<InviteGate client:load eventID="welcome-to-narxville">
+  <div align="center" style={{ marginBottom: "2em" }}>
+    <img src="/events/welcome-to-narxville.jpg" width="450" />
+    <h1 style={{ marginTop: "1rem" }}>
+      <i>"Only you could come up with an event name this retarded" - Patrick Leonard</i>
+    </h1>
+  </div>
+
+  <div style={{ marginBottom: "2rem" }}>
+    Welcome to Narxville everyone! As a followup to the previous years I've thrown
+    small summer parties, I'm going to be throwing the biggest party our group has
+    seen. We're gonna have everything at this one guys.
+  </div>
+
+  <h1 style={{ marginBottom: "1rem" }}>
+    <strong>Event Details:</strong>
+  </h1>
+
+  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1rem" }}>
+    <h2 style={{ textDecoration: "underline" }}>Location:</h2>
+    <span>3890 Clove Ct, Seaford, NY 11783</span>
+  </div>
+
+  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1rem" }}>
+    <h2 style={{ textDecoration: "underline" }}>Date & Time:</h2>
+    <span>Saturday August 1st 2026, 4PM - 12AM (or longer)</span>
+  </div>
+
+  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1rem" }}>
+    <h2 style={{ textDecoration: "underline" }}>Entry Fee:</h2>
+    <span>None, but bringing drinks is greatly appreciated (coordinate with me beforehand)</span>
+  </div>
+
+  <div style={{ display: "flex", alignItems: "flex-start", gap: "8px", marginBottom: "2em" }}>
+    <h2 style={{ textDecoration: "underline" }}>Details:</h2>
+    <div>
+      <ul style={{ listStyleType: "circle", marginBottom: 0, marginLeft: "1rem" }}>
+        <li>BBQ with Big Petey himself on the grill</li>
+        <li>An assortment of drinks available including a mixed drink menu bartended by Pat</li>
+        <li>Stations for pong and blackjack</li>
+        <li>
+          My first live DJ set ft. an assortment of electronic and dance music
+          (house, eurodance, trance, happy hardcore, makina, dnb, speedcore).
+          Even if I don't manage to get a controller by the time of the party you
+          bet my ass is just gonna use my laptop
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    Although I am inviting a lot of people to this event, please do not share the
+    invite link around without asking me.
+  </div>
+
+</InviteGate>

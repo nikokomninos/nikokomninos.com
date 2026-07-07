@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+export async function getStaticPaths() {
+  const events = await getCollection("events", ({ data }) => {
+    return data.status === "published";
+  });
+
+  return events.map((event) => ({
+    params: { slug: event.id.replace(/\.(md|mdx)$/, "") },
+    props: event,
+  }));
+}
+
+const event = Astro.props as CollectionEntry<"events">;
+const { Content } = await render(event);
+---
+
+<MainLayout hideNavbar={false}>
+  <h1 class="mb-6 text-xl font-semibold">{event.data.title}</h1>
+  <Content />
+</MainLayout>

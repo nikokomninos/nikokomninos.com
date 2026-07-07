@@ -39,7 +39,6 @@ import { RiDiscordLine } from "react-icons/ri";
         <div class="mb-3 flex items-center justify-end gap-2">
           <h1 class="text-xl font-semibold">Niko Komninos</h1>
           <span><NamePronounce /></span>
-          <ThemeSwitcher />
         </div>
         <h2>Full-Stack Developer &#9702; Graduate Student @ Adelphi</h2>
         <h2>Graduate Assistant @ Adelphi</h2>
@@ -143,10 +142,8 @@ import { RiDiscordLine } from "react-icons/ri";
       encrypted mail, you can use my PGP key:
     </p>  !-->
 
-    <details class="text-center">
-      <summary class="cursor-pointer text-sm select-none">
-        PGP Key For Encrypted Mail
-      </summary>
+    <div class="text-center">
+      <p class="text-sm select-none underline">PGP Key For Encrypted Mail</p>
       <pre
         class="border-foreground-alt/50 mt-3 overflow-x-auto rounded-sm border p-4 text-xs">
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -167,7 +164,7 @@ qzB1iOfhw2cX58A1f8hcMtUL
 =6WB3
 -----END PGP PUBLIC KEY BLOCK-----
       </pre>
-    </details>
+    </div>
     <!--
     <h2 class="mb-2 text-lg font-semibold">Notable Work</h2>
     <ul class="mb-5 space-y-2">

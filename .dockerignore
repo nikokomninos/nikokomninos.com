@@ -1,0 +1,9 @@
+.git
+dist
+node_modules
+.astro
+.DS_Store
+.env
+.env.*
+!.env.production.example
+infra/terraform/**/secrets.auto.tfvars

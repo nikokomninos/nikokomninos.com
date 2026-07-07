@@ -6,25 +6,22 @@ const posts = (await getCollection("posts")).sort(
   (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const renderedPosts = posts.map((post: any) => ({
-  ...post,
-  postNumber: post.id.replace(/\.md$/, ""),
-}));
+const getPostSlug = (id: string) => id.replace(/\.md$/, "");
 ---
 
 <MainLayout>
   <h1 class="mb-6 text-xl font-semibold">Posts</h1>
   <div class="space-y-2">
     {
-      renderedPosts.map((post: any) => (
+      posts.map((post: any) => (
         <article>
           <a
-            href={`/posts/${post.slug}`}
+            href={`/posts/${getPostSlug(post.id)}`}
             class="hover:bg-foreground-alt/10 ease-linear duration-75 rounded-md block py-1"
           >
             <h2 class="text-sm font-semibold">{post.data.title}</h2>
             <div class="flex gap-1 items-center text-foreground/75 text-xs">
-              <span>#{post.postNumber}</span>
+              <span>#{getPostSlug(post.id)}</span>
               <span>&#9702;</span>
               <time>
                 {post.data.pubDate.toLocaleDateString("en-US", {
