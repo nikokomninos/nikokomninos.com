@@ -13,7 +13,6 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -49,36 +48,11 @@ func main() {
 }
 
 func getRSVP(c *gin.Context) {
-	inv, ok := validateInvite(c)
-	if !ok {
+	if _, ok := validateInvite(c); !ok {
 		return
 	}
 
-	var rsvp struct {
-		Email      string    `json:"email"`
-		FirstName  string    `json:"firstName"`
-		LastName   string    `json:"lastName"`
-		Attendance string    `json:"attendance"`
-		UpdatedAt  time.Time `json:"updatedAt"`
-	}
-
-	err := db.QueryRow(
-		c.Request.Context(),
-		`SELECT email, first_name, last_name, attendance, updated_at
-		 FROM event_rsvps
-		 WHERE invite_id = $1`,
-		inv.ID,
-	).Scan(&rsvp.Email, &rsvp.FirstName, &rsvp.LastName, &rsvp.Attendance, &rsvp.UpdatedAt)
-	if err == pgx.ErrNoRows {
-		c.JSON(http.StatusOK, gin.H{"eventID": c.Param("eventID"), "valid": true, "rsvp": nil})
-		return
-	}
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "load failed"})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"eventID": c.Param("eventID"), "valid": true, "rsvp": rsvp})
+	c.JSON(http.StatusOK, gin.H{"eventID": c.Param("eventID"), "valid": true, "rsvp": nil})
 }
 
 func putRSVP(c *gin.Context) {
@@ -98,7 +72,7 @@ func putRSVP(c *gin.Context) {
 		return
 	}
 
-	input.Email = strings.TrimSpace(input.Email)
+	input.Email = strings.ToLower(strings.TrimSpace(input.Email))
 	input.FirstName = strings.TrimSpace(input.FirstName)
 	input.LastName = strings.TrimSpace(input.LastName)
 
@@ -116,8 +90,8 @@ func putRSVP(c *gin.Context) {
 		`INSERT INTO event_rsvps
 		 (invite_id, event_id, email, first_name, last_name, attendance)
 		 VALUES ($1, $2, $3, $4, $5, $6)
-		 ON CONFLICT (invite_id) DO UPDATE SET
-		   email = EXCLUDED.email,
+		 ON CONFLICT (event_id, email) DO UPDATE SET
+		   invite_id = EXCLUDED.invite_id,
 		   first_name = EXCLUDED.first_name,
 		   last_name = EXCLUDED.last_name,
 		   attendance = EXCLUDED.attendance,

@@ -40,17 +40,6 @@ export default function RSVP({ eventID = "" }: { eventID?: string }) {
 
         if (!res.ok) throw new Error("failed");
 
-        const data = await res.json();
-
-        if (data.rsvp) {
-          setForm({
-            email: data.rsvp.email,
-            firstName: data.rsvp.firstName,
-            lastName: data.rsvp.lastName,
-            attendance: data.rsvp.attendance,
-          });
-        }
-
         setStatus("ready");
       })
       .catch(() => {

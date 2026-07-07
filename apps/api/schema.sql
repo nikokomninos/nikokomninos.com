@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS event_invites (
 
 CREATE TABLE IF NOT EXISTS event_rsvps (
   id BIGSERIAL PRIMARY KEY,
-  invite_id BIGINT NOT NULL UNIQUE REFERENCES event_invites(id) ON DELETE CASCADE,
+  invite_id BIGINT NOT NULL REFERENCES event_invites(id) ON DELETE CASCADE,
   event_id TEXT NOT NULL REFERENCES events(id) ON DELETE CASCADE,
   email TEXT NOT NULL,
   first_name TEXT NOT NULL,
@@ -24,6 +24,12 @@ CREATE TABLE IF NOT EXISTS event_rsvps (
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+ALTER TABLE event_rsvps
+DROP CONSTRAINT IF EXISTS event_rsvps_invite_id_key;
+
+CREATE UNIQUE INDEX IF NOT EXISTS event_rsvps_event_email_key
+ON event_rsvps (event_id, email);
 
 INSERT INTO events (id, title, starts_at)
 VALUES ('welcome-to-narxville', 'Welcome to Narxville', '2026-08-01T16:00:00-04:00')
